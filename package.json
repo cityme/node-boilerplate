@@ -1,0 +1,40 @@
+{
+  "name": "node-boilerplate",
+  "version": "0.0.0",
+  "private": true,
+  "main": "",
+  "scripts": {
+    "clean": "rm -rf ./build ./logs",
+    "build": "rm -rf ./build && ./node_modules/.bin/babel src --ignore spec.js,test.js --out-dir build",
+    "lint": "eslint --config=./.eslintrc src",
+    "lint:fix": "eslint --fix --config=./.eslintrc src",
+    "serve": "NODE_ENV=production node ./build/index.js --rLoginId testpartner3546 --rLoginPass wasabisaikou51 --id testuser_399 --pass zyp90qTk",
+    "start": "NODE_ENV=development nodemon ./src/index.js --exec \"eslint --fix --config=./.eslintrc src & babel-node\"",
+    "tape:tests": "NODE_ENV=tests ./node_modules/.bin/tape -r babel-register ./src/**/__tests__/**/index.js | tap-notify | tap-diff"
+  },
+  "engines": {
+    "node": "5.4.0",
+    "npm": "3.3.12"
+  },
+  "dependencies": {
+    "nconf": "^0.8.4",
+    "winston": "^2.2.0",
+    "winston-daily-rotate-file": "^1.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-plugin-transform-async-to-generator": "6.8.0",
+    "babel-plugin-transform-object-rest-spread": "6.8.0",
+    "babel-preset-es2015-node5": "1.2.0",
+    "babel-register": "^6.6.5",
+    "eslint": "^2.13.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.1",
+    "eslint-plugin-jsx-a11y": "^1.5.3",
+    "eslint-plugin-react": "^5.2.2",
+    "nodemon": "^1.9.2",
+    "tap-diff": "^0.1.1",
+    "tap-notify": "^1.0.0",
+    "tape": "^4.6.0"
+  }
+}
