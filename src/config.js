@@ -1,5 +1,15 @@
 import path from 'path';
 import nconf from 'nconf';
+import yaml from 'js-yaml';
+
+const nconfyaml = {
+  stringify: (obj, options) => {
+    return yaml.safeDump(obj, options);
+  },
+  parse: (obj, options) => {
+    return yaml.safeLoad(obj, options);
+  },
+};
 
 nconf.env().argv();
 
@@ -18,8 +28,13 @@ export default function config() {
   if (env === 'tests') {
     f = 'tests.json';
   }
-  nconf.argv().env().file({
+  nconf.argv().env()
+  .file({
     file: relativePath('..', 'config', f),
+  })
+  .file({
+    file: relativePath('..', 'config', 'development.yaml'),
+    format: nconfyaml,
   })
   .defaults({});
 }

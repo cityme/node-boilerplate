@@ -1,0 +1,17 @@
+---
+endpoints:
+  - url: http://127.0.0.1:8081/healthcheck
+    id: shopping
+    name: Shopping System
+    interval: 3000
+    reporter: mySlackReporter
+
+reporters:
+  mySlackReporter:
+    type: slack
+    channel: #test
+    webhookUrl: https://hooks.slack.com/services/<some secret id>
+    botName: Health Check
+    botImage: http://lorempixel.com/64/64/
+  myConsoleReporter:
+    type: console
